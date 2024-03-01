@@ -30,6 +30,11 @@ gem 'tzinfo-data', platforms: %i[ windows jruby ]
 gem 'bootsnap', require: false
 # gem 'image_processing', '~> 1.2'
 
+gem 'bootstrap'
+gem 'sassc-rails'
+gem 'execjs'
+gem 'mini_racer'
+
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ]
   gem 'dotenv-rails'
