@@ -1,1 +1,32 @@
-HELLO
+.border-bottom.fs-5.text-secondary.fst-italic.my-2  Open Projects
+%table.table.mb-5
+  %tbody
+    - Project.find_each do |project|
+      %tr
+        %td= project.id
+        %td= project.name
+        %td
+          %span.badge.text-bg-info= project.status
+        %td
+          Updated
+          = time_ago_in_words(project.updated_at)
+          ago
+        %td
+          = link_to 'Open', project_path(project), class: 'btn btn-primary btn-sm float-end'
+
+
+.border-bottom.fs-5.text-secondary.fst-italic.my-2  Closed Projects
+%table.table
+  %tbody
+    - Project.find_each do |project|
+      %tr
+        %td= project.id
+        %td= project.name
+        %td
+          %span.badge.text-bg-info= project.status
+        %td
+          Updated
+          = time_ago_in_words(project.updated_at)
+          ago
+        %td
+          = link_to 'View', project_path(project), class: 'btn btn-primary btn-sm float-end'
