@@ -1,0 +1,7 @@
+- if flash[:notice]
+  .alert.alert-success.rounded-0.text-center.py-1{role: 'alert'}
+    = flash[:notice]
+
+- if flash[:alert]
+  .alert.alert-warning.rounded-0.text-center.py-1{role: 'alert'}
+    = flash[:alert]
