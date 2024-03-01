@@ -34,10 +34,12 @@ gem 'bootstrap'
 gem 'sassc-rails'
 gem 'execjs'
 gem 'mini_racer'
+gem "haml-rails", "~> 2.0"
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ]
   gem 'dotenv-rails'
+  gem 'html2haml'
 end
 
 group :development do
