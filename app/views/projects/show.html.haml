@@ -1,8 +1,47 @@
-%p{:style => "color: green"}= notice
-= render @project
-%div
-  = link_to "Edit this project", edit_project_path(@project)
-  |
-  \#{link_to "Back to projects", projects_path}
-  
-  \#{button_to "Destroy this project", @project, method: :delete}
+.container-fluid.border-bottom.px-0
+  .row
+    .col
+      %h3
+        = @project.name
+    .col.text-end
+      = render partial: 'status_badge', locals: { record: @project }
+      = link_to icon('fa-solid', 'pencil'), edit_project_path(@project), class: 'btn btn-sm btn-outline-primary'
+      - if @project.locked?
+        = link_to icon('fa-solid', 'unlock'), '#', class: 'btn btn-sm btn-outline-danger'
+      - else
+        = link_to icon('fa-solid', 'lock'), '#', class: 'btn btn-sm btn-outline-danger'
+
+        
+.container-fluid.d-none
+  %pre= @project.description
+
+.container-fluid.px-0.mt-5
+  .row
+    .col.border-end
+      %h4
+        Sessions
+        = link_to icon('fa-solid', 'plus'), '#', class: 'btn btn-sm btn-outline-primary'      
+      .container
+        .fs-5.border-bottom 2023-01-12
+        .border-bottom
+          %pre
+            This is some text for exaplems.
+            Did this, and that, has X problem, check TODO
+
+      .container
+        .border-bottom 2023-01-12
+        .border-bottom
+          This is some text
+
+      .container
+        .border-bottom 2023-01-12
+        .border-bottom
+          This is some text
+          
+    .col-4
+      %h4 TODO Overview
+      %ul
+        %li Thing 1
+        %li Thing 2
+        %li Thing 3
+        %li Thing 4        
