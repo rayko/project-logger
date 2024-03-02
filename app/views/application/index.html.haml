@@ -1,7 +1,7 @@
 .border-bottom.fs-5.text-secondary.fst-italic.my-2  Open Projects
 %table.table.mb-5
   %tbody
-    - Project.find_each do |project|
+    - Project.open.order('updated_at DESC').each do |project|
       %tr
         %td= project.id
         %td= project.name
@@ -17,7 +17,7 @@
 .border-bottom.fs-5.text-secondary.fst-italic.my-2  Closed Projects
 %table.table
   %tbody
-    - Project.find_each do |project|
+    - Project.closed.each do |project|
       %tr
         %td= project.id
         %td= project.name

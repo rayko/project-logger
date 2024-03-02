@@ -40,8 +40,8 @@
                 - elsif entry.status_blocked? || entry.status_closed? || entry.status_abandoned?
                   .badge.text-bg-danger= entry.status.upcase
               .col.text-end
-                = link_to icon('fa-solid', 'pencil'), '#', class: 'btn btn-sm btn-outline-primary'
-                = link_to icon('fa-solid', 'minus'), '#"', class: 'btn btn-sm btn-outline-danger'                
+                = link_to icon('fa-solid', 'pencil'), edit_entry_path(entry), class: 'btn btn-sm btn-outline-primary'
+                .float-end.mx-1= button_to icon('fa-solid', 'minus'), entry, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-sm btn-outline-danger'
 
           .border-bottom
             %pre{ :style => 'text-wrap: balance' }= entry.body

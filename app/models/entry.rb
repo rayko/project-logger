@@ -12,7 +12,7 @@ class Entry < ApplicationRecord
   private
 
   def update_project_status
-    project.update_attribute :status, status
+    project.refresh_status_from_entries!
   end
 
 end

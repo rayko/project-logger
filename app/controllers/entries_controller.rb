@@ -1,15 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[ show edit update destroy ]
 
-  # GET /entries or /entries.json
-  def index
-    @entries = Entry.all
-  end
-
-  # GET /entries/1 or /entries/1.json
-  def show
-  end
-
   # GET /entries/new
   def new
     @entry = Entry.new
@@ -23,6 +14,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/1/edit
   def edit
+    @project = @entry.project
   end
 
   # POST /entries or /entries.json
@@ -42,9 +34,10 @@ class EntriesController < ApplicationController
 
   # PATCH/PUT /entries/1 or /entries/1.json
   def update
+    @project = @entry.project
     respond_to do |format|
       if @entry.update(entry_params)
-        format.html { redirect_to entry_url(@entry), notice: "Entry was successfully updated." }
+        format.html { redirect_to project_url(@project), notice: "Entry was successfully updated." }
         format.json { render :show, status: :ok, location: @entry }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,10 +48,11 @@ class EntriesController < ApplicationController
 
   # DELETE /entries/1 or /entries/1.json
   def destroy
+    @project = @entry.project
     @entry.destroy!
 
     respond_to do |format|
-      format.html { redirect_to entries_url, notice: "Entry was successfully destroyed." }
+      format.html { redirect_to @project, notice: "Entry was successfully destroyed." }
       format.json { head :no_content }
     end
   end

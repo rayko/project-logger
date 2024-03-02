@@ -19,4 +19,14 @@ class Project < ApplicationRecord
     save
   end
 
+  def refresh_status_from_entries!
+    return status if entries.empty?
+
+    last_entry = entries.order('date DESC').first
+    return status if last_entry.status == status
+
+    update_attribute :status, last_entry.status
+    status
+  end
+  
 end

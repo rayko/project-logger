@@ -1,15 +1,15 @@
 - if record.status_pending?
   %span.badge.rounded-pill.text-bg-primary= record.status.upcase
 - elsif record.status_booting?
-  %span.badge.rounded-pill.text-bg-sucess= record.status.upcase
+  %span.badge.rounded-pill.text-bg-success= record.status.upcase
 - elsif record.status_ongoing?
-  %span.badge.rounded-pill.text-bg-sucess= record.status.upcase
+  %span.badge.rounded-pill.text-bg-success= record.status.upcase
 - elsif record.status_paused?
   %span.badge.rounded-pill.text-bg-warning= record.status.upcase
 - elsif record.status_blocked?
   %span.badge.rounded-pill.text-bg-danger= record.status.upcase
 - elsif record.status_finished?
-  %span.badge.rounded-pill.text-bg-sucess= record.status.upcase
+  %span.badge.rounded-pill.text-bg-success= record.status.upcase
 - elsif record.status_closed?
   %span.badge.rounded-pill.text-bg-danger= record.status.upcase
 - elsif record.status_abandoned?
