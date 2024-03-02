@@ -1,0 +1,11 @@
+.alert.alert-danger{role: "alert"}
+  %h5.alert-heading
+    = pluralize(record.errors.count, "error")
+    prohibited this
+    = record.class.name
+    from being saved:
+  %hr/
+  %p.mb-0
+    %ul
+      - record.errors.each do |error|
+        %li= error.full_message

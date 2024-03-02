@@ -1,26 +1,11 @@
 = form_with(model: project) do |form|
   - if project.errors.any?
-    %div{:style => "color: red"}
-      %h2
-        = pluralize(project.errors.count, "error")
-        prohibited this project from being saved:
-      %ul
-        - project.errors.each do |error|
-          %li= error.full_message
-  %div
-    = form.label :name, style: "display: block"
-    = form.text_field :name
-  %div
-    = form.label :description, style: "display: block"
-    = form.text_area :description
-  %div
-    = form.label :status, style: "display: block"
-    = form.text_field :status
-  %div
-    = form.label :locked, style: "display: block"
-    = form.check_box :locked
-  %div
-    = form.label :locked_at, style: "display: block"
-    = form.datetime_field :locked_at
-  %div
-    = form.submit
+    = render partial: 'shared/validation_errors_alert', locals: { record: project }
+  .mb-3
+    = form.label :name, :class => 'form-label'
+    = form.text_field :name, :class => 'form-control'
+  .mb-3
+    = form.label :description, :class => 'form-label'
+    = form.text_area :description, :class => 'form-control', rows: 20
+  .mb-3
+    = form.submit 'Save Project', :class => 'btn btn-outline-primary'
