@@ -1,1 +1,16 @@
-- if record.
+- if record.status_pending?
+  %span.badge.text-bg-primary= record.status.upcase
+- elsif record.status_booting?
+  %span.badge.text-bg-sucess= record.status.upcase
+- elsif record.status_ongoing?
+  %span.badge.text-bg-sucess= record.status.upcase
+- elsif record.status_paused?
+  %span.badge.text-bg-warning= record.status.upcase
+- elsif record.status_blocked?
+  %span.badge.text-bg-danger= record.status.upcase
+- elsif record.status_finished?
+  %span.badge.text-bg-sucess= record.status.upcase
+- elsif record.status_closed?
+  %span.badge.text-bg-danger= record.status.upcase
+- elsif record.status_abandoned?
+  %span.badge.text-bg-danger= record.status.upcase

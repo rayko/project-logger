@@ -5,8 +5,7 @@
       %tr
         %td= project.id
         %td= project.name
-        %td
-          %span.badge.text-bg-info= project.status
+        %td= render partial: 'projects/status_badge', locals: { record: project }
         %td
           Updated
           = time_ago_in_words(project.updated_at)
@@ -22,8 +21,7 @@
       %tr
         %td= project.id
         %td= project.name
-        %td
-          %span.badge.text-bg-info= project.status
+        %td= render partial: 'projects/status_badge', locals: { record: project }        
         %td
           Updated
           = time_ago_in_words(project.updated_at)
