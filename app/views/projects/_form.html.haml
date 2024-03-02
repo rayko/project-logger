@@ -1,6 +1,7 @@
 = form_with(model: project) do |form|
   - if project.errors.any?
     = render partial: 'shared/validation_errors_alert', locals: { record: project }
+
   .mb-3
     = form.label :name, :class => 'form-label'
     = form.text_field :name, :class => 'form-control'

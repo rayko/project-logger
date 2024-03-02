@@ -41,6 +41,7 @@ group :development, :test do
   gem 'debug', platforms: %i[ mri windows ]
   gem 'dotenv-rails'
   gem 'html2haml'
+  gem 'byebug'
 end
 
 group :development do

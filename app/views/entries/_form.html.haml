@@ -1,0 +1,24 @@
+= form_with(model: entry) do |form|    
+  - if entry.errors.any?
+    = render partial: 'shared/validation_errors_alert', locals: { record: entry }
+
+  = form.hidden_field :project_id
+  = form.hidden_field :status
+  .row
+    .col
+      .mb-3
+        = form.label :date, :class => 'form-label'
+        = form.date_field :date, :class => 'form-control', :format => "YYYY-MM-DD"
+    .col
+      .mb-3
+        = form.label :status, :class => 'form-label'
+        = form.select :status, Entry::STATUS_LIST.values, {}, :class => 'form-select'
+    .col
+      .mb-3
+        = form.label :hours, :class => 'form-label'
+        = form.number_field :hours, :class => 'form-control'
+  .mb-3
+    = form.label :body, :class => 'form-label'
+    = form.text_area :body, :class => 'form-control', rows: 20
+  .mb-3
+    = form.submit 'Save Entry', :class => 'btn btn-outline-primary'

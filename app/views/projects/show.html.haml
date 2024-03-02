@@ -11,7 +11,7 @@
       - else
         = link_to icon('fa-solid', 'lock'), '#', class: 'btn btn-sm btn-outline-danger'
 
-        
+
 .container-fluid.d-none
   %pre= @project.description
 
@@ -20,28 +20,36 @@
     .col.border-end
       %h4
         Sessions
-        = link_to icon('fa-solid', 'plus'), '#', class: 'btn btn-sm btn-outline-primary'      
-      .container
-        .fs-5.border-bottom 2023-01-12
-        .border-bottom
-          %pre
-            This is some text for exaplems.
-            Did this, and that, has X problem, check TODO
+        = link_to icon('fa-solid', 'plus'), new_entry_path(project_id: @project.id), class: 'btn btn-sm btn-outline-primary'
+      - if @project.entries.empty?
+        .container.fst-italic No entries yet
+      - @project.entries.order('date DESC').each do |entry|
+        .container.mb-4
+          .fs-4.border-bottom.pb-1
+            .row
+              .col
+                = entry.date
+                - unless entry.hours.blank?
+                  .badge.text-bg-secondary= "#{entry.hours} h"
+                - if entry.status_pending?
+                  .badge.text-bg-primary= entry.status.upcase
+                - elsif entry.status_booting? || entry.status_ongoing? || entry.status_finished?
+                  .badge.text-bg-success= entry.status.upcase
+                - elsif entry.status_paused?
+                  .badge.text-bg-warning= entry.status.upcase
+                - elsif entry.status_blocked? || entry.status_closed? || entry.status_abandoned?
+                  .badge.text-bg-danger= entry.status.upcase
+              .col.text-end
+                = link_to icon('fa-solid', 'pencil'), '#', class: 'btn btn-sm btn-outline-primary'
+                = link_to icon('fa-solid', 'minus'), '#"', class: 'btn btn-sm btn-outline-danger'                
 
-      .container
-        .border-bottom 2023-01-12
-        .border-bottom
-          This is some text
+          .border-bottom
+            %pre{ :style => 'text-wrap: balance' }= entry.body
 
-      .container
-        .border-bottom 2023-01-12
-        .border-bottom
-          This is some text
-          
     .col-4
       %h4 TODO Overview
       %ul
         %li Thing 1
         %li Thing 2
         %li Thing 3
-        %li Thing 4        
+        %li Thing 4
