@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_03_164546) do
     t.string "email", limit: 128
     t.string "password_digest"
     t.string "name"
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email"

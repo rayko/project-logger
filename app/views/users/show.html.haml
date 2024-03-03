@@ -1,6 +1,19 @@
-%p#notice= notice
+.border-bottom.fs-5.text-secondary.fst-italic.my-2  This is you
+%table.table.mb-5
+  %tbody
+    %tr
+      %td= current_user.id
+      %td= current_user.email
+      %td= current_user.admin? ? 'Admin' : 'User'
+      %td= current_user.name
+      %td
+        Created
+        = time_ago_in_words(current_user.created_at)
+        ago
+      %td
+        Modified
+        = time_ago_in_words(current_user.updated_at)
+        ago
 
-
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+= link_to 'Update', edit_user_path(current_user), :class => 'btn btn-primary'
+= link_to 'Change Password', '#', :class => 'btn btn-primary'

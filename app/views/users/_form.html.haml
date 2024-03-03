@@ -1,10 +1,9 @@
-= form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      %ul
-        - @user.errors.full_messages.each do |message|
-          %li= message
+= form_with(model: user) do |form|
+  - if user.errors.any?
+    = render partial: 'shared/validation_errors_alert', locals: { record: user }
 
-  .actions
-    = f.submit 'Save'
+  .mb-3
+    = form.label :name, :class => 'form-label'
+    = form.text_field :name, :class => 'form-control'
+  .mb-3
+    = form.submit 'Save', :class => 'btn btn-outline-primary'
