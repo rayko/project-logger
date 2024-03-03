@@ -1,4 +1,5 @@
 class TodoItemsController < ApplicationController
+  before_action :authorize_user!
   before_action :set_todo_item, only: %i[ flip destroy ]
 
   def flip
@@ -9,7 +10,7 @@ class TodoItemsController < ApplicationController
       format.json { render :show, status: :created, location: @todo_item }
     end
   end
-  
+
   # POST /todo_items or /todo_items.json
   def create
     @todo_item = TodoItem.new(todo_item_params)

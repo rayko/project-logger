@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-3.mx-auto
+      = form_tag(login_path, method: :post) do
+        .mb-3
+          = email_field_tag :email, nil, :class => 'form-control', :placeholder => 'eMail ...'
+        .mb-3
+          = password_field_tag :password, nil, :class => 'form-control', :placeholder => 'Password ...'
+        .mb-3
+          .d-grid.gap-2
+            = submit_tag 'Login', :class => 'btn btn-outline-primary'

@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  before_action :authorize_user!
   before_action :set_entry, only: %i[ edit update destroy ]
 
   # GET /entries/new

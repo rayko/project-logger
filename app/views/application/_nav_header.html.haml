@@ -5,9 +5,16 @@
     %button.navbar-toggler{"aria-controls" => "navbarTogglerDemo02", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarToggler", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarToggler.collapse.navbar-collapse
-      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        %li.nav-item
-          %a.nav-link.active{:href => "#"} Users
+      - if current_user
+        %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          %li.nav-item
+            %a.nav-link.active{:href => "#"} Users
+      - else
+        %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        
       %form
-        %a.btn.btn-sm.btn-outline-primary.mr-2{ href: "#" } Login
-        %a.btn.btn-sm.btn-outline-primary.mr-2{ href: new_project_path } Create Project
+        - if current_user
+          = link_to 'Create Project', new_project_path, :class => 'btn btn-sm btn-outline-primary mr-2'
+          = link_to 'Logout', login_path, :class => 'btn btn-sm btn-outline-primary mr-2', :data => { turbo_method: :delete }
+        - else
+          = link_to 'Login', login_path, :class => 'btn btn-sm btn-outline-primary mr-2'

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get 'login' => 'sessions#new', as: :login
+  post 'login' => 'sessions#create'
+  delete 'login' => 'sessions#destroy'
+  
+  resources :users
   resources :todo_items, except: %i[index show edit update] do
     post :flip, on: :member
   end
