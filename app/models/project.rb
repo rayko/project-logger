@@ -2,6 +2,7 @@ class Project < ApplicationRecord
   include Statuses
 
   has_many :entries
+  has_many :todo_items
 
   scope :open, -> { where(status: [:pending, :booting, :ongoing, :paused, :blocked]) }
   scope :closed, -> { where(status: [:finished, :closed, :abandonded]) }

@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: %i[ show edit update destroy ]
+  before_action :set_entry, only: %i[ edit update destroy ]
 
   # GET /entries/new
   def new
@@ -23,7 +23,7 @@ class EntriesController < ApplicationController
     @project = @entry.project
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to project_url(@project), notice: "Entry was successfully created." }
+        format.html { redirect_to @project, notice: "Entry was successfully created." }
         format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new, status: :unprocessable_entity }

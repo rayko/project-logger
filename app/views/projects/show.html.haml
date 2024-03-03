@@ -41,15 +41,27 @@
                   .badge.text-bg-danger= entry.status.upcase
               .col.text-end
                 = link_to icon('fa-solid', 'pencil'), edit_entry_path(entry), class: 'btn btn-sm btn-outline-primary'
-                .float-end.mx-1= button_to icon('fa-solid', 'minus'), entry, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-sm btn-outline-danger'
+                .d-inline-block.float-end.mx-1= button_to icon('fa-regular', 'trash-can'), entry, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-sm btn-outline-danger'
 
           .border-bottom
             %pre{ :style => 'text-wrap: balance' }= entry.body
 
     .col-4
       %h4 TODO Overview
-      %ul
-        %li Thing 1
-        %li Thing 2
-        %li Thing 3
-        %li Thing 4
+      = render partial: 'todo_items/form', locals: { todo_item: TodoItem.new(project_id: @project.id) }
+      %hr
+      - if @project.todo_items.empty?
+        .container.fst-italic Nothing to do yet :p
+      - else
+        %ul.list-group.list-group-flush.fs-5
+          - @project.todo_items.order('created_at ASC').each do |item|
+            %li.list-group-item.px-0
+              - if item.checked?
+                %span.me-2
+                  = link_to icon('fa-regular', 'square-check'), flip_todo_item_path(item), data: { turbo_method: :post }
+                %span.text-secondary.text-decoration-line-through= item.text
+              - else
+                %span.me-2
+                  = link_to icon('fa-regular', 'square'), flip_todo_item_path(item), data: { turbo_method: :post }
+                %span= item.text
+              %span.d-inline-block.float-end.mx-1= button_to icon('fa-regular', 'trash-can'), item, method: :delete, class: 'btn btn-sm btn-outline-danger'
