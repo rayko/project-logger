@@ -5,6 +5,7 @@ class Project < ApplicationRecord
 
   has_many :entries
   has_many :todo_items
+  belongs_to :user
 
   scope :open, -> { where(status: [:pending, :booting, :ongoing, :paused, :blocked]) }
   scope :closed, -> { where(status: [:finished, :closed, :abandonded]) }

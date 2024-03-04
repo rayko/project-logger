@@ -1,7 +1,9 @@
 .border-bottom.fs-5.text-secondary.fst-italic.my-2  Open Projects
 %table.table.mb-5
   %tbody
-    - Project.open.order('updated_at DESC').each do |project|
+    - if current_user.projects.empty?
+      %i No projects yet
+    - current_user.projects.open.order('updated_at DESC').each do |project|
       %tr
         %td= project.id
         %td= project.name
@@ -17,7 +19,9 @@
 .border-bottom.fs-5.text-secondary.fst-italic.my-2  Closed Projects
 %table.table
   %tbody
-    - Project.closed.each do |project|
+    - if current_user.projects.empty?
+      %i No projects yet
+    - current_user.projects.closed.each do |project|
       %tr
         %td= project.id
         %td= project.name
