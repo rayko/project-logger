@@ -17,7 +17,7 @@
         = link_to icon('fa-solid', 'arrow-left'), @project
         = @project.name
     .col.text-end
-      .mt-1= render partial: 'status_badge', locals: { record: @project }
+      .mt-2= render partial: 'status_badge', locals: { record: @project }
 
 .container.border
   .trix-content= @project.description
@@ -54,32 +54,18 @@
       .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
 
 .container.mt-5
-  %h3.border-bottom Resources (feature pending)
-  .border-bottom.d-inline-block.w-100.pb-2
-    .float-start
-      .p-3.fs-3.d-inline= icon('fa-solid', 'link')
-    .float-start
-      %div Some text for this link
-      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
-
-  .border-bottom.d-inline-block.w-100.pb-2
-    .float-start
-      .p-3.fs-3.d-inline= icon('fa-solid', 'link')
-    .float-start
-      %div Some text for this link
-      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
-
-  .border-bottom.d-inline-block.w-100.pb-2
-    .float-start
-      .p-3.fs-3.d-inline= icon('fa-solid', 'link')
-    .float-start
-      %div Some text for this link
-      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
-
-  .border-bottom.d-inline-block.w-100.pb-2
-    .float-start
-      .p-3.fs-3.d-inline= icon('fa-solid', 'link')
-    .float-start
-      %div Some text for this link
-      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
-      
+  %h3.border-bottom
+    Resources
+    = link_to icon('fa-solid', 'plus'), new_resource_link_path(project_id: @project.id), class: 'btn btn-sm btn-outline-primary', title: 'New Link'
+  - if @project.resource_links.empty?
+    .text-body-secondary.fst-italic No links yet
+  - @project.resource_links.each do |link|
+    .border-bottom.d-inline-block.w-100.pb-2
+      .float-start
+        .p-3.fs-3.d-inline= icon('fa-solid', 'link')
+      .float-start
+        %div= link.title
+        .fw-light.text-body-secondary{style: 'font-size: 0.8em'}= link_to link.link, link.link, target: '_blank'
+      .float-end
+        .float-end.ms-1= button_to icon('fa-regular', 'trash-can'), link, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-sm btn-outline-danger', title: 'Delete'
+        .float-end= link_to icon('fa-solid', 'pencil'), edit_resource_link_path(link), class: 'btn btn-sm btn-outline-primary', title: 'Edit'

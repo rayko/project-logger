@@ -1,0 +1,13 @@
+= form_with(model: resource_link) do |form|
+  - if resource_link.errors.any?
+    = render partial: 'shared/validation_errors_alert', locals: { record: resource_link }
+  
+  = form.hidden_field :project_id
+  .mb-3
+    = form.label :title, :class => 'form-label'
+    = form.text_field :title, :class => 'form-control'
+  .mb-3
+    = form.label :link, :class => 'form-label'
+    = form.text_field :link, :class => 'form-control'
+  .mb-3
+    = form.submit 'Save Link', :class => 'btn btn-outline-primary'

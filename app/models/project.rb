@@ -5,6 +5,7 @@ class Project < ApplicationRecord
 
   has_many :entries
   has_many :todo_items
+  has_many :resource_links
   belongs_to :user
 
   scope :open, -> { where(status: [:pending, :booting, :ongoing, :paused, :blocked]) }

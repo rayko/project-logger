@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :resource_links, except: %i[show index]
 
   get 'login' => 'sessions#new', as: :login
   post 'login' => 'sessions#create'
