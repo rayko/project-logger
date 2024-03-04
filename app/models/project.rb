@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
   include Statuses
 
+  has_rich_text :description
+
   has_many :entries
   has_many :todo_items
 

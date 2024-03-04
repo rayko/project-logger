@@ -12,8 +12,8 @@
         = link_to icon('fa-solid', 'lock'), '#', class: 'btn btn-sm btn-outline-danger'
 
 
-.container-fluid.d-none
-  %pre= @project.description
+.container-fluid
+  .trix-content= @project.description
 
 .container-fluid.px-0.mt-5
   .row
