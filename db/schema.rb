@@ -64,10 +64,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_03_222448) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name", limit: 128
-    t.text "description"
     t.string "status", limit: 32, null: false
     t.boolean "locked", default: false
     t.datetime "locked_at"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
