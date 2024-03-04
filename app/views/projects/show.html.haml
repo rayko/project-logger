@@ -41,7 +41,7 @@
                 .d-inline-block.float-end.mx-1= button_to icon('fa-regular', 'trash-can'), entry, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-sm btn-outline-danger', title: 'Delete'
 
           .border-bottom
-            %pre{ :style => 'text-wrap: balance' }= entry.body
+            .trix-content= entry.body
 
     .col-4
       %h4 TODO Overview

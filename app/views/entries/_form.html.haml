@@ -19,6 +19,6 @@
         = form.number_field :hours, :class => 'form-control', step: 0.01
   .mb-3
     = form.label :body, :class => 'form-label'
-    = form.text_area :body, :class => 'form-control', rows: 20
+    = form.rich_text_area :body, :class => 'form-control'
   .mb-3
     = form.submit 'Save Entry', :class => 'btn btn-outline-primary'

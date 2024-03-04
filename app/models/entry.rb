@@ -1,6 +1,8 @@
 class Entry < ApplicationRecord
   include Statuses
 
+  has_rich_text :body
+
   belongs_to :project
 
   validates :project, presence: true
