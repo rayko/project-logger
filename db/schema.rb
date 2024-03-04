@@ -55,7 +55,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_03_222448) do
   create_table "entries", force: :cascade do |t|
     t.integer "project_id", null: false
     t.date "date", null: false
-    t.text "body"
     t.string "status", limit: 32, null: false
     t.float "hours"
     t.datetime "created_at", null: false

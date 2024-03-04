@@ -1,9 +1,9 @@
-.container
+.container{style: 'font-size: 0.8em'}
   .row.border-bottom.pb-1
     .col.border-end
       .text-secondary.fst-italic Project Details
     .col.border-end
-      .text-secondary.fst-italic= "Added #{time_ago_in_words(@project.created_at)} ago"
+      .text-secondary.fst-italic= "Created #{time_ago_in_words(@project.created_at)} ago"
     .col.border-end
       .text-secondary.fst-italic= "Updated #{time_ago_in_words(@project.updated_at)} ago"
     .col.border-end
