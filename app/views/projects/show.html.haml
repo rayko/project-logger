@@ -5,22 +5,19 @@
         = @project.name
     .col.text-end
       = render partial: 'status_badge', locals: { record: @project }
-      = link_to icon('fa-solid', 'pencil'), edit_project_path(@project), class: 'btn btn-sm btn-outline-primary'
+      = link_to icon('fa-solid', 'pencil'), edit_project_path(@project), class: 'btn btn-sm btn-outline-primary', title: 'Edit'
+      = link_to icon('fa-solid', 'magnifying-glass'), details_project_path(@project), class: 'btn btn-sm btn-outline-primary', title: 'Details'
       - if @project.locked?
-        = link_to icon('fa-solid', 'unlock'), '#', class: 'btn btn-sm btn-outline-danger'
+        = link_to icon('fa-solid', 'unlock'), '#', class: 'btn btn-sm btn-outline-danger', title: 'Unlock'
       - else
-        = link_to icon('fa-solid', 'lock'), '#', class: 'btn btn-sm btn-outline-danger'
-
-
-.container-fluid
-  .trix-content= @project.description
+        = link_to icon('fa-solid', 'lock'), '#', class: 'btn btn-sm btn-outline-danger', title: 'Lock'
 
 .container-fluid.px-0.mt-5
   .row
     .col.border-end
       %h4
-        Sessions
-        = link_to icon('fa-solid', 'plus'), new_entry_path(project_id: @project.id), class: 'btn btn-sm btn-outline-primary'
+        Entries
+        = link_to icon('fa-solid', 'plus'), new_entry_path(project_id: @project.id), class: 'btn btn-sm btn-outline-primary', title: 'New Entry'
       - if @project.entries.empty?
         .container.fst-italic No entries yet
       - @project.entries.order('date DESC').each do |entry|
@@ -40,8 +37,8 @@
                 - elsif entry.status_blocked? || entry.status_closed? || entry.status_abandoned?
                   .badge.text-bg-danger= entry.status.upcase
               .col.text-end
-                = link_to icon('fa-solid', 'pencil'), edit_entry_path(entry), class: 'btn btn-sm btn-outline-primary'
-                .d-inline-block.float-end.mx-1= button_to icon('fa-regular', 'trash-can'), entry, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-sm btn-outline-danger'
+                = link_to icon('fa-solid', 'pencil'), edit_entry_path(entry), class: 'btn btn-sm btn-outline-primary', title: 'Edit'
+                .d-inline-block.float-end.mx-1= button_to icon('fa-regular', 'trash-can'), entry, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-sm btn-outline-danger', title: 'Delete'
 
           .border-bottom
             %pre{ :style => 'text-wrap: balance' }= entry.body
@@ -64,4 +61,4 @@
                 %span.me-2
                   = link_to icon('fa-regular', 'square'), flip_todo_item_path(item), data: { turbo_method: :post }
                 %span= item.text
-              %span.d-inline-block.float-end.mx-1= button_to icon('fa-regular', 'trash-can'), item, method: :delete, class: 'btn btn-sm btn-outline-danger'
+              %span.d-inline-block.float-end.mx-1= button_to icon('fa-regular', 'trash-can'), item, method: :delete, class: 'btn btn-sm btn-outline-danger', title: 'Delete'

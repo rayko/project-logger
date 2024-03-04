@@ -1,0 +1,83 @@
+.container
+  .row.border-bottom.pb-1
+    .col.border-end
+      .text-secondary.fst-italic Project Details
+    .col.border-end
+      .text-secondary.fst-italic= "Added #{time_ago_in_words(@project.created_at)} ago"
+    .col.border-end
+      .text-secondary.fst-italic= "Updated #{time_ago_in_words(@project.updated_at)} ago"
+    .col.border-end
+      .text-secondary.fst-italic= "Entries: #{@project.entries.count}"
+    .col
+      .text-secondary.fst-italic= "By: #{@project.user.name || @project.user.email}"
+
+  .row.pt-1
+    .col
+      %h3= @project.name
+    .col.text-end
+      .mt-1= render partial: 'status_badge', locals: { record: @project }
+
+.container.border
+  .trix-content= @project.description
+
+.container.mt-5
+  %h3.border-bottom Assets (feature pending)
+
+  .border-bottom.d-inline-block.w-100.pb-2
+    .float-start
+      .p-3.fs-3.d-inline= icon('fa-solid', 'file')
+    .float-start
+      %div Some text for this link
+      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
+
+  .border-bottom.d-inline-block.w-100.pb-2
+    .float-start
+      .p-3.fs-3.d-inline= icon('fa-solid', 'file')
+    .float-start
+      %div Some text for this link
+      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
+
+  .border-bottom.d-inline-block.w-100.pb-2
+    .float-start
+      .p-3.fs-3.d-inline= icon('fa-solid', 'file')
+    .float-start
+      %div Some text for this link
+      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
+
+  .border-bottom.d-inline-block.w-100.pb-2
+    .float-start
+      .p-3.fs-3.d-inline= icon('fa-solid', 'file')
+    .float-start
+      %div Some text for this link
+      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
+
+.container.mt-5
+  %h3.border-bottom Resources (feature pending)
+  .border-bottom.d-inline-block.w-100.pb-2
+    .float-start
+      .p-3.fs-3.d-inline= icon('fa-solid', 'link')
+    .float-start
+      %div Some text for this link
+      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
+
+  .border-bottom.d-inline-block.w-100.pb-2
+    .float-start
+      .p-3.fs-3.d-inline= icon('fa-solid', 'link')
+    .float-start
+      %div Some text for this link
+      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
+
+  .border-bottom.d-inline-block.w-100.pb-2
+    .float-start
+      .p-3.fs-3.d-inline= icon('fa-solid', 'link')
+    .float-start
+      %div Some text for this link
+      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
+
+  .border-bottom.d-inline-block.w-100.pb-2
+    .float-start
+      .p-3.fs-3.d-inline= icon('fa-solid', 'link')
+    .float-start
+      %div Some text for this link
+      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
+      

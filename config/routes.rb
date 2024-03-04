@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     post :flip, on: :member
   end
   resources :entries, except: %i[index show]
-  resources :projects
+  resources :projects do
+    get :details, on: :member
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
