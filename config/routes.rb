@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :entries, except: %i[index show]
   resources :projects do
     get :details, on: :member
+    get :upload_file_asset, on: :member
+    post :create_file_asset, on: :member
+    delete :destroy_file_asset, on: :member
+    get :download_file_asset, on: :member
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

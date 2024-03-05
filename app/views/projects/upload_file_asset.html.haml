@@ -1,0 +1,13 @@
+.container
+  %h3.border-bottom
+    New File Asset for
+    = @project.name
+  = form_with(model: @project, url: create_file_asset_project_path(@project), method: :post) do |form|
+    - if @project.errors.any?
+      = render partial: 'shared/validation_errors_alert', locals: { record: @project }
+
+    .mb-3
+      = form.label :file_asset, :class => 'form-label'
+      = form.file_field :file_asset, :class => 'form-control'
+    .mb-3
+      = form.submit 'Save File Asset', :class => 'btn btn-outline-primary'

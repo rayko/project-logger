@@ -50,7 +50,7 @@
       - if @project.todo_items.empty?
         .container.fst-italic Nothing to do yet :p
       - else
-        %ul.list-group.list-group-flush.fs-5
+        %ul.list-group.list-group-flush.fs-6
           - @project.todo_items.order('created_at ASC').each do |item|
             %li.list-group-item.px-0
               - if item.checked?

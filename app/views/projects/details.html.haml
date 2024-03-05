@@ -23,35 +23,23 @@
   .trix-content= @project.description
 
 .container.mt-5
-  %h3.border-bottom Assets (feature pending)
+  %h3.border-bottom
+    Assets
+    = link_to icon('fa-solid', 'plus'), upload_file_asset_project_path(@project), class: 'btn btn-sm btn-outline-primary', title: 'New Asset'
 
-  .border-bottom.d-inline-block.w-100.pb-2
-    .float-start
-      .p-3.fs-3.d-inline= icon('fa-solid', 'file')
-    .float-start
-      %div Some text for this link
-      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
+  - if @project.file_assets.empty?
+    .text-body-secondary.fst-italic No assets yet    
+  - @project.file_assets.each do |file_asset|
+    .border-bottom.d-inline-block.w-100.pb-2
+      .float-start
+        .p-3.fs-3.d-inline= icon('fa-solid', 'file')
+      .float-start
+        %div= file_asset.blob.filename
+        .fw-light.text-body-secondary{style: 'font-size: 0.8em'}= file_asset.blob.content_type
+      .float-end
+        .float-end.ms-1= button_to icon('fa-regular', 'trash-can'), destroy_file_asset_project_path(@project, file_asset_id: file_asset.id), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-sm btn-outline-danger', title: 'Delete'
+        .float-end= link_to icon('fa-solid', 'download'), download_file_asset_project_path(@project, file_asset_id: file_asset.id), class: 'btn btn-sm btn-outline-primary', title: 'Download', target: '_blank'
 
-  .border-bottom.d-inline-block.w-100.pb-2
-    .float-start
-      .p-3.fs-3.d-inline= icon('fa-solid', 'file')
-    .float-start
-      %div Some text for this link
-      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
-
-  .border-bottom.d-inline-block.w-100.pb-2
-    .float-start
-      .p-3.fs-3.d-inline= icon('fa-solid', 'file')
-    .float-start
-      %div Some text for this link
-      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
-
-  .border-bottom.d-inline-block.w-100.pb-2
-    .float-start
-      .p-3.fs-3.d-inline= icon('fa-solid', 'file')
-    .float-start
-      %div Some text for this link
-      .fw-light.text-body-secondary{style: 'font-size: 0.8em'} http://somewhere.com/article?asd=123
 
 .container.mt-5
   %h3.border-bottom
