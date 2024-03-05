@@ -32,7 +32,7 @@
   - @project.file_assets.each do |file_asset|
     .border-bottom.d-inline-block.w-100.pb-2
       .float-start
-        .p-3.fs-3.d-inline= icon('fa-solid', 'file')
+        .p-3.fs-3.d-inline= render partial: 'file_asset_icon', locals: { content_type: file_asset.blob.content_type }
       .float-start
         %div= file_asset.blob.filename
         .fw-light.text-body-secondary{style: 'font-size: 0.8em'}= file_asset.blob.content_type

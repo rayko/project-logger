@@ -1,0 +1,8 @@
+- if content_type =~ /image/i
+  = icon('fa-regular', 'file-image')
+- elsif content_type =~ /text/i
+  = icon('fa-regular', 'file-lines')
+- elsif content_type =~ /zip|rar|7zip|tar|gz|7z/i
+  = icon('fa-regular', 'file-zipper')
+- else
+  = icon('fa-regular', 'file')
