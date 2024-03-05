@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'login' => 'sessions#destroy'
   
-  resources :users, except: %i[index destroy create new]
+  resources :users, except: %i[index destroy create new] do
+    get :update_password, on: :member
+    post :change_password, on: :member
+  end
   resources :todo_items, except: %i[index show edit update] do
     post :flip, on: :member
   end
