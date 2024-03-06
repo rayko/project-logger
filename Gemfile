@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '3.2.2'
 
 # gem 'rails',           '~> 7.1.3', '>= 7.1.3.2'
-# gem 'actioncable',     '~> 7.1.3', '>= 7.1.3.2'
+gem 'actioncable',     '~> 7.1.3', '>= 7.1.3.2' # Required because of a bug loading TurboRails
 gem 'activestorage',   '~> 7.1.3', '>= 7.1.3.2'
 gem 'actionmailbox',   '~> 7.1.3', '>= 7.1.3.2'
 gem 'actiontext',      '~> 7.1.3', '>= 7.1.3.2'

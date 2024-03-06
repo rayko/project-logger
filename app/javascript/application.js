@@ -7,4 +7,4 @@ import 'bootstrap'
 
 import "trix"
 import "@rails/actiontext"
-import "./trix-editor-overrides"
+import "trix-editor-overrides"
