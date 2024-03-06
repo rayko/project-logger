@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+APP_PATH = File.expand_path('../config/application', __dir__)
+
+require_relative '../config/boot'
+require_relative '../lib/project_logger_cli'
+
+begin
+  ProjectLoggerCLI.start(ARGV, debug: true) # Enables the script to rescue `Thor::Error`
+rescue Thor::Error => e
+  Thor::Shell::Color
+    .new
+    .say_error(e.message, :red)
+  exit(1)
+rescue Interrupt
+  exit(130)
+end

@@ -15,6 +15,7 @@ gem 'actionmailer',    '~> 7.1.3', '>= 7.1.3.2'
 # gem 'activejob',       '~> 7.1.3', '>= 7.1.3.2'
 gem 'activesupport',   '~> 7.1.3', '>= 7.1.3.2'
 gem 'railties',        '~> 7.1.3', '>= 7.1.3.2'
+gem 'thor', require: false
 
 gem 'sprockets-rails'
 gem 'pg', '~> 1.5'
