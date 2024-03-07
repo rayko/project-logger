@@ -7,10 +7,10 @@
       = render partial: 'status_badge', locals: { record: @project }
       = link_to icon('fa-solid', 'pencil'), edit_project_path(@project), class: 'btn btn-sm btn-outline-primary', title: 'Edit'
       = link_to icon('fa-solid', 'magnifying-glass'), details_project_path(@project), class: 'btn btn-sm btn-outline-primary', title: 'Details'
-      - if @project.locked?
-        = link_to icon('fa-solid', 'unlock'), '#', class: 'btn btn-sm btn-outline-danger', title: 'Unlock'
-      - else
-        = link_to icon('fa-solid', 'lock'), '#', class: 'btn btn-sm btn-outline-danger', title: 'Lock'
+      -# - if @project.locked?
+      -#   = link_to icon('fa-solid', 'unlock'), '#', class: 'btn btn-sm btn-outline-danger', title: 'Unlock'
+      -# - else
+      -#   = link_to icon('fa-solid', 'lock'), '#', class: 'btn btn-sm btn-outline-danger', title: 'Lock'
 
 .container-fluid.px-0.mt-5
   .row

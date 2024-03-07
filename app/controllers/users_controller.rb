@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authorize_user!
-  before_action :set_user, only: %i[ show update update_password change_password ]
+  before_action :set_user, only: %i[ show edit update update_password change_password ]
 
   def update_password
   end
