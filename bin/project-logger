@@ -1,11 +1,30 @@
 #!/usr/bin/env ruby
-APP_PATH = File.expand_path('../config/application', __dir__)
 
 require_relative '../config/boot'
-require_relative '../lib/project_logger_cli'
+require_relative '../config/environment'
+require 'thor'
+
+class ProjectLoggerCli < Thor
+
+  desc "create_user EMAIL PASS [NAME]", "Creates a regular user"
+  def create_user(email, password, name = nil)
+    print "Creating #{email} / #{password} / #{name} ... "
+    user = User.create!(email: email, password: password, name: name)
+    puts "> ID #{user.id} -- Done!"
+  end
+
+  desc "create_user EMAIL PASS [NAME]", "Creates an admin user"
+  def create_admin(email, password, name = nil)
+    print "Creating #{email} / #{password} / #{name} ... "
+    user = User.create!(email: email, password: password, name: name, admin: true)
+    puts "> ID #{user.id} -- Done!"
+  end
+
+end
+
 
 begin
-  ProjectLoggerCLI.start(ARGV, debug: true) # Enables the script to rescue `Thor::Error`
+  ProjectLoggerCli.start(ARGV, debug: true) # Enables the script to rescue `Thor::Error`
 rescue Thor::Error => e
   Thor::Shell::Color
     .new
