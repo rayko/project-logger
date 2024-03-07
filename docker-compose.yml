@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  db:
+    restart: always
+    image: postgres:16-alpine
+    shm_size: 256mb
+    networks:
+      - internal_network
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', 'postgres']
+    volumes:
+      - ./docker-env/postgres16:/var/lib/postgresql/data
+    environment:
+      - 'POSTGRES_HOST_AUTH_METHOD=trust'
+  web:
+    build: .
+    restart: always
+    env_file: .env.production
+    command: bundle exec puma -C config/puma.rb
+    networks:
+      - external_network
+      - internal_network
+    # healthcheck:
+    #   test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:3000/health || exit 1']
+    ports:
+      - '127.0.0.1:3000:3000'
+    depends_on:
+      - db
+    volumes:
+      - ./docker-env/storage:/rails/storage
+
+networks:
+  external_network:
+  internal_network:
+    internal: true
