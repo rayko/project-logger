@@ -8,14 +8,24 @@ require 'action_view/railtie'
 require 'action_mailer/railtie'
 # require 'active_job/railtie'
 require 'action_cable/engine' # Bug that requires this: https://github.com/hotwired/turbo-rails/issues/512
-require 'action_mailbox/engine'
+# require 'action_mailbox/engine'
 require 'action_text/engine'
 require 'rails/test_unit/railtie'
+# require 'rack_cors'
 
 Bundler.require(*Rails.groups)
 
 module ProjectLogger
   class Application < Rails::Application
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "localhost:*", "127.0.0.1:*"
+        resource "*",
+                 headers: :any,
+                 methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
@@ -31,6 +41,6 @@ module ProjectLogger
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.active_storage.variant_processor = :mini_magick    
+    config.active_storage.variant_processor = :mini_magick
   end
 end

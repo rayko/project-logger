@@ -37,6 +37,7 @@ gem 'execjs'
 gem 'mini_racer'
 gem "haml-rails", "~> 2.0"
 gem "font-awesome-sass", "~> 6.5.1"
+gem 'rack-cors'
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ]
