@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-md.navbar-dark.bg-dark
   .container-fluid
     %a.navbar-brand{ href: root_path }
-      %h3.p-0.m-0 PL
+      = image_tag 'favicon_250x250.png', alt: 'Project Logger', width: 30, height: 30
     %button.navbar-toggler{"aria-controls" => "navbarTogglerDemo02", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarToggler", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarToggler.collapse.navbar-collapse
