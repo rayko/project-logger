@@ -18,23 +18,14 @@ class UsersController < ApplicationController
   
   # GET /users/1 or /users/1.json
   def show
-    if !@user.admin? && params[:id] != @user.id
-      return redirect_to(root_path, alert: 'Not allowed')
-    end
   end
 
   # GET /users/1/edit
   def edit
-    if !@user.admin? && params[:id] != @user.id
-      return redirect_to(root_path, alert: 'Not allowed')
-    end
   end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    if !@user.admin? && params[:id] != @user.id
-      return redirect_to(root_path, alert: 'Not allowed')
-    end
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
