@@ -18,9 +18,9 @@
       %h4
         Entries
         = link_to icon('fa-solid', 'plus'), new_entry_path(project_id: @project.id), class: 'btn btn-sm btn-outline-primary', title: 'New Entry'
-      - if @project.entries.empty?
+      - if @entries.empty?
         .container.fst-italic No entries yet
-      - @project.entries.order('date DESC').each do |entry|
+      - @entries.each do |entry|
         .container.mb-4
           .fs-4.border-bottom.pb-1
             .row
@@ -42,6 +42,8 @@
 
           .border-bottom
             .trix-content= entry.body
+      .entry-pages
+        = paginate @entries
 
     .col-4
       %h4 TODO Overview

@@ -46,6 +46,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1 or /projects/1.json
   def show
+    @entries = @project.entries.order('date DESC').page(params[:page])
   end
 
   # GET /projects/new
