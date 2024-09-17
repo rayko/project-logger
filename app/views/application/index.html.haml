@@ -8,10 +8,7 @@
         %td= project.id
         %td= project.name
         %td= render partial: 'projects/status_badge', locals: { record: project }
-        %td
-          Updated
-          = time_ago_in_words(project.updated_at)
-          ago
+        %td= project_last_updated_at(project)
         %td
           = link_to 'Open', project_path(project), class: 'btn btn-primary btn-sm float-end'
 
@@ -24,10 +21,7 @@
       %tr
         %td= project.id
         %td= project.name
-        %td= render partial: 'projects/status_badge', locals: { record: project }        
-        %td
-          Updated
-          = time_ago_in_words(project.updated_at)
-          ago
+        %td= render partial: 'projects/status_badge', locals: { record: project }
+        %td= project_last_updated_at(project)
         %td
           = link_to 'View', project_path(project), class: 'btn btn-primary btn-sm float-end'
