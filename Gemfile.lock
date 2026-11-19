@@ -175,6 +175,7 @@ GEM
     matrix (0.4.2)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.9)
     mini_racer (0.8.0)
       libv8-node (~> 18.16.0.0)
     minitest (5.22.2)
@@ -190,7 +191,8 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.2-x86_64-linux)
+    nokogiri (1.16.2)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pg (1.5.5)
     popper_js (2.11.8)
@@ -331,7 +333,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.4.13p195
 
 BUNDLED WITH
    2.4.10
