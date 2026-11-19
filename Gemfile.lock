@@ -162,6 +162,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    libv8-node (18.16.0.0)
     libv8-node (18.16.0.0-x86_64-linux)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -336,4 +337,4 @@ RUBY VERSION
    ruby 3.4.13p195
 
 BUNDLED WITH
-   2.4.10
+   2.6.9
